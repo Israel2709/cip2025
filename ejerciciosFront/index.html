@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <form
+        id="user-form"
+        class="border bg-gray-800 text-white flex flex-col gap-4 rounded-lg p-4"
+      >
+        <div class="flex flex-col gap-4">
+          <label for="">Nombre del usuario</label>
+          <input
+            id="user-name"
+            class="h-10 border rounded-lg ps-4 bg-gray-600"
+            type="text"
+            value=""
+          />
+          <p class="error-message hidden text-red-500">Campo requerido</p>
+        </div>
+        <div class="flex flex-col gap-4">
+          <label for="">Dirección</label>
+          <input
+            id="user-address"
+            class="h-10 border rounded-lg ps-4 bg-gray-600"
+            type="text"
+            value=""
+          />
+          <p class="error-message hidden text-red-500">Campo requerido</p>
+        </div>
+        <div class="flex flex-col gap-4">
+          <label for="">Correo</label>
+          <input
+            id="user-email"
+            class="h-10 border rounded-lg ps-4 bg-gray-600"
+            type="text"
+            value=""
+          />
+          <p class="error-message hidden text-red-500">Campo requerido</p>
+        </div>
+        <div class="flex flex-col gap-4">
+          <label for="">He leído la política de privacidad</label>
+          <input
+            id="privacy-field"
+            class="h-10 border rounded-lg ps-4 bg-gray-600"
+            type="checkbox"
+          />
+          <p class="error-message hidden text-red-500">Campo requerido</p>
+        </div>
+        <button
+          id="save-user"
+          class="px-4 py-2 rounded-full bg-cyan-400 text-white"
+        >
+          Guardar usuario
+        </button>
+      </form>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

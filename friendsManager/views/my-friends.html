@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends Manager - my friends</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <nav
+      class="h-16 bg-purple-800 text-white flex border bottom-purple-900 shadow-lg mb-4"
+    >
+      <div class="container mx-auto h-full flex justify-end items-center">
+        <ul class="flex h-full items-center">
+          <li
+            class="px-4 hover:bg-white hover:text-purple-800 h-full flex items-center transition hover:cursor-pointer"
+          >
+            Meet New Friends
+          </li>
+          <li
+            class="px-4 hover:bg-white hover:text-purple-800 h-full flex items-center transition hover:cursor-pointer"
+          >
+            <a href="views/my-friends.html">My Friends</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 px-4" id="friends-list">
+        <div class="w 1/2 bg-purple-400 text-white p-4 rounded-lg shadow">
+          Aún no has agregado amigos
+        </div>
+      </div>
+    </div>
+    <script src="../js/myFriends.js"></script>
+  </body>
+</html>
