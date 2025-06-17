@@ -1,5 +1,15 @@
 const MY_FRIENDS = "https://ajaxclass-1ca34.firebaseio.com/israFriends/";
 
+let newAlias = "";
+let editingFriendKey = null;
+const aliasModal = document.getElementById("aliasModal");
+
+const aliasField = document.getElementById("alias");
+aliasField.addEventListener("keyup", (event) => {
+  const value = event.target.value;
+  newAlias = value;
+});
+
 const getAllFriends = async () => {
   const response = await fetch(`${MY_FRIENDS}/.json`);
   const data = await response.json();
@@ -30,6 +40,15 @@ const removeFriend = async (friendKey) => {
   console.log(data);
 };
 
+const addAlias = async (friendKey, alias) => {
+  const response = await fetch(`${MY_FRIENDS}/${friendKey}/.json`, {
+    method: "PATCH",
+    body: JSON.stringify(alias),
+  });
+  const data = await response.json();
+  console.log(data);
+};
+
 const getElementClassNames = (classnamesString) => classnamesString.split(" ");
 const primaryButtonClassnames =
   "bg-purple-800 text-white rounded-full px-4 py-2 hover:cursor-pointer hover:bg-purple-600";
@@ -52,7 +71,7 @@ const printPeople = (peopleArray) => {
   const personEmailClassnames = "text-xl";
 
   peopleArray.forEach((person) => {
-    let { name, email, picture, phone, key } = person;
+    let { name, email, picture, phone, key, alias } = person;
     const personCard = document.createElement("div");
     personCard.classList.add(...getElementClassNames(personCardClassnames));
     console.log(personCard);
@@ -66,7 +85,7 @@ const printPeople = (peopleArray) => {
     const personName = document.createElement("h2");
     personName.classList.add(...getElementClassNames(personNameClassnames));
     const personNameText = document.createTextNode(
-      `${name.first} ${name.last}`
+      `${name.first} ${name.last} ${alias ? `(${alias})` : ""}`
     );
     personName.append(personNameText);
 
@@ -93,16 +112,43 @@ const printPeople = (peopleArray) => {
       await getAllFriends();
     });
 
+    const editFriendButton = document.createElement("button");
+    editFriendButton.classList.add(
+      ...getElementClassNames(primaryButtonClassnames)
+    );
+    const editFriendButtonText = document.createTextNode("Agregar alias");
+    editFriendButton.append(editFriendButtonText);
+
+    editFriendButton.addEventListener("click", async () => {
+      console.log("editando amigo");
+      aliasModal.classList.remove("hidden");
+      editingFriendKey = key;
+      console.log(editingFriendKey);
+      /*await addAlias(key, { alias: "Nolly" });
+      await getAllFriends();*/
+      /*await removeFriend(key);
+      await getAllFriends();*/
+    });
+
     personCard.append(
       personPicture,
       personName,
       personPhone,
       personEmail,
-      removeFriendButton
+      removeFriendButton,
+      editFriendButton
     );
 
     peopleListWrapper.append(personCard);
   });
 };
+
+const saveAliasButton = document.getElementById("save-alias");
+
+saveAliasButton.addEventListener("click", async () => {
+  await addAlias(editingFriendKey, { alias: newAlias });
+  aliasModal.classList.add("hidden");
+  await getAllFriends();
+});
 
 getAllFriends();

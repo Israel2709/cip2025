@@ -7,6 +7,49 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
+    <div
+      id="aliasModal"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden"
+    >
+      <div
+        class="bg-white dark:bg-gray-800 p-6 rounded-xl w-full max-w-md shadow-xl"
+      >
+        <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
+          Agregar alias de amigo
+        </h2>
+
+        <form id="aliasForm" onsubmit="handleSaveAlias(event)">
+          <label for="alias" class="block text-gray-700 dark:text-gray-300 mb-2"
+            >Alias:</label
+          >
+          <input
+            type="text"
+            id="alias"
+            name="alias"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            placeholder="Escribe un alias"
+            required
+          />
+
+          <div class="flex justify-end mt-4 space-x-2">
+            <button
+              type="button"
+              onclick="document.getElementById('aliasModal').classList.add('hidden')"
+              class="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded"
+            >
+              Cancelar
+            </button>
+            <button
+              id="save-alias"
+              type="button"
+              class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
+            >
+              Guardar alias
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
     <nav
       class="h-16 bg-purple-800 text-white flex border bottom-purple-900 shadow-lg mb-4"
     >
