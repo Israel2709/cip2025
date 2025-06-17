@@ -21,17 +21,16 @@ getAllPeople();
 const getElementClassNames = (classnamesString) => classnamesString.split(" ");
 const primaryButtonClassnames =
   "bg-purple-800 text-white rounded-full px-4 py-2 hover:cursor-pointer hover:bg-purple-600";
+const personCardClassnames =
+  "border shadow-lg border-purple-800 border-2 rounded-lg p-4 flex flex-col gap-4 items-center";
+const personPictureClassnames = "rounded-full w-40 h-40 object-cover";
+const personNameClassnames = "text-2xl text-purple-800";
+const personPhoneClassnames = "text-xl";
+const personEmailClassnames = "text-xl";
 
 const printPeople = (peopleArray) => {
   const peopleListWrapper = document.getElementById("people-list");
   peopleListWrapper.innerHTML = "";
-
-  const personCardClassnames =
-    "border shadow-lg border-purple-800 border-2 rounded-lg p-4 flex flex-col gap-4 items-center";
-  const personPictureClassnames = "rounded-full w-40 h-40 object-cover";
-  const personNameClassnames = "text-2xl text-purple-800";
-  const personPhoneClassnames = "text-xl";
-  const personEmailClassnames = "text-xl";
 
   peopleArray.forEach((person) => {
     let { name, email, picture, phone } = person;
