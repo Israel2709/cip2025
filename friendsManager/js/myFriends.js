@@ -80,26 +80,25 @@ const printPeople = (peopleArray) => {
     const personEmailText = document.createTextNode(email);
     personEmail.append(personEmailText);
 
-    const addFriendButton = document.createElement("button");
-    addFriendButton.classList.add(
+    const removeFriendButton = document.createElement("button");
+    removeFriendButton.classList.add(
       ...getElementClassNames(primaryButtonClassnames)
     );
-    const addFriendButtonText = document.createTextNode("Agregar amigo");
+    const removeFriendButtonText = document.createTextNode("Borrar amigo");
+    removeFriendButton.append(removeFriendButtonText);
 
-    addFriendButton.addEventListener("click", async () => {
+    removeFriendButton.addEventListener("click", async () => {
       console.log(person);
-      const removedFriend = await removeFriend(key);
-      const friends = await getAllFriends();
+      await removeFriend(key);
+      await getAllFriends();
     });
-
-    addFriendButton.append(addFriendButtonText);
 
     personCard.append(
       personPicture,
       personName,
       personPhone,
       personEmail,
-      addFriendButton
+      removeFriendButton
     );
 
     peopleListWrapper.append(personCard);
